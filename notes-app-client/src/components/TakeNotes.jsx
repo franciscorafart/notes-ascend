@@ -29,22 +29,13 @@ export default function TakeNotes() {
     setNotes(prev => prev.map(item => item.id === noteId ? newValue : item))
   }
 
-  const completeNote = id => {
-    let updateNotes = todos.map(note => {
-      if( note.id === id){
-        note.isComplete = !note.isComplete
-      }
-      return note
-    })
-    setNotes(updateNotes)
-  }
+
 
   return (
     <div className='noteForm'>
       <NoteForm onSubmit={addNote}/>
       <Note
       notes={notes}
-      completeNote={completeNote}
       removeNote={removeNote}
       updateNote={updateNote}/>
     </div>
