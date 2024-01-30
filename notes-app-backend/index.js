@@ -5,8 +5,8 @@ const cors = require('cors')
 require('dotenv').config()
 const port = process.env.PORT
 const bodyParser = require('body-parser')
-//const connectDB = require() // create config  folder, connect datatbase file, and then require that file
-//connectDB()
+const connectDB = require('./config/connectDB') 
+connectDB()
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
