@@ -7,7 +7,7 @@ notesRouter.get('/', async (req, res) => {
 })
 
 notesRouter.post('/', async (req, res) => {
-    const body = request.content
+    const body = request.body
 
     const note = new Note({
         note: body.note,
