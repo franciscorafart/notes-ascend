@@ -1,7 +1,7 @@
 import React, { useState} from 'react'
 import NoteForm from './NoteForm'
 
-function Note({notes, removeNote, updateNote}) {
+function Note({notes, favoriteNote, removeNote, updateNote}) {
     const [edit, setEdit] = useState({id:null, value: ''})
 
     const submitUpdate = value => {
@@ -17,8 +17,8 @@ function Note({notes, removeNote, updateNote}) {
     }
 
     return notes.map((note, index) => (
-        <div className='note-row' key={index}>
-          <div key={note.id} >
+        <div className={ note.isFavorite ? 'note-row fav' : 'note-row'} key={index}>
+          <div key={note.id} onClick={() => favoriteNote(note.id)}>
             {note.text}
           </div>
           <div className='icons'>
