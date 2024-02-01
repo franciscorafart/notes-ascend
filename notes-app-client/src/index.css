@@ -25,7 +25,6 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -52,6 +51,39 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.fav {
+  color: green;
+}
+
+.note-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4px auto;
+  /* color: black; */
+  border: 1px solid #161a2b;
+  background-color: white;
+  padding: 16px;
+  border-radius: 5px;
+  width: 50%;
+  font-weight: 600;
+}
+.icons {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.delete-icon {
+  margin-right: 5px;
+  color: black;
+}
+
+.edit-icon {
+  color: black;
 }
 
 @media (prefers-color-scheme: light) {
