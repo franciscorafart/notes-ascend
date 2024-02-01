@@ -29,15 +29,27 @@ export default function TakeNotes() {
     setNotes(prev => prev.map(item => item.id === noteId ? newValue : item))
   }
 
+  const favoriteNote = id => {
+    let updateNote = notes.map(note => {
+      if( note.id === id){
+        note.isFavorite = !note.isFavorite
+      }
+      return note
+    })
+    setNotes(updateNote)
+  }
+
 
 
   return (
     <div className='noteForm'>
       <NoteForm onSubmit={addNote}/>
       <Note
-      notes={notes}
-      removeNote={removeNote}
-      updateNote={updateNote}/>
+        notes={notes}
+        removeNote={removeNote}
+        updateNote={updateNote}
+        favoriteNote={favoriteNote}
+      />
     </div>
   )
 }
