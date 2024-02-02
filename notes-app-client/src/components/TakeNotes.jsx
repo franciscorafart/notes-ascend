@@ -7,23 +7,6 @@ export default function TakeNotes() {
 
   const [notes, setNotes] = useState([])
 
-  // fetching notes from the back-end
-  useEffect(() => {
-    const fetchData = async () => {
-    try {
-      const response = await fetch('/api/notes/')
-      const result = await response.json()
-      setNotes(result)
-      console.log('this is the notes from the backend', result)
-    }
-    catch (err) {
-      console.error(err)
-    }
-  }
-  fetchData()
-  }, [])
-
-
   const addNote = note => {
     if (!note.text || /^\s*$/.test(note.text)) {
       return

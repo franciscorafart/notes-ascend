@@ -1,11 +1,10 @@
 import ReactMarkdown from "react-markdown";
 
-const Main = ({ activeNote, onUpdateNote }) => {
+const Main = ({ activeNote, onUpdateNote, onSave }) => {
   const onEditField = (field, value) => {
     onUpdateNote({
       ...activeNote,
       [field]: value,
-      lastModified: Date.now(),
     });
   };
 
@@ -28,6 +27,7 @@ const Main = ({ activeNote, onUpdateNote }) => {
           value={activeNote.body}
           onChange={(e) => onEditField("body", e.target.value)}
         />
+        <button className="save-button" onClick={onSave}>Save</button>
       </div>
       <div className="app-main-note-preview">
         <h1 className="preview-title">{activeNote.title}</h1>
