@@ -8,7 +8,7 @@ notesRouter.get('/', async (req, res) => {
 
 notesRouter.post('/create', async (req, res) => {
     const body = req.body
-
+    
     const note = new Note({
         title: body.title,
         note: body.note,
@@ -17,6 +17,7 @@ notesRouter.post('/create', async (req, res) => {
     })
 
     const savedNote = await note.save()
+    console.log('saved note', savedNote)
 
     res.status(201).json(savedNote)
 })
