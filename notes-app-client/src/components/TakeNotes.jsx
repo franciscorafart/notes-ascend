@@ -60,7 +60,7 @@ export default function TakeNotes() {
 
   return (
     <div className='noteForm'>
-      <NoteForm onSubmit={addNote} />
+      <NoteForm onSubmit={addNote}/>
       <Note
         notes={notes}
         removeNote={removeNote}
