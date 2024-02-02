@@ -44,9 +44,9 @@ export default function TakeNotes() {
   return (
     <div className='noteForm'>
       <NoteForm onSubmit={addNote}/>
-      <Note 
-        notes={notes} 
-        removeNote={removeNote} 
+      <Note
+        notes={notes}
+        removeNote={removeNote}
         updateNote={updateNote}
         favoriteNote={favoriteNote}
       />

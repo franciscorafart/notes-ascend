@@ -11,7 +11,7 @@ function Note({notes, favoriteNote, removeNote, updateNote}) {
         value: ''
       })
     }
-  
+
     if(edit.id){
       return <NoteForm edit={edit} onSubmit={submitUpdate} />
     }
