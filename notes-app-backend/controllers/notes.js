@@ -19,4 +19,18 @@ notesRouter.post('/create', async (req, res) => {
     res.status(201).json(savedNote)
 })
 
+
+notesRouter.post('/update', async (req, res) => {
+    const {id, note, important } = req.body;
+
+    const n = await Note.findOne({ _id: id });
+
+    n.note = note || n.note;
+    n.impotant = important !== undefined ? important : n.important;
+
+    const savedNote = await n.save()
+
+    res.status(201).json(savedNote)
+})
+
 module.exports = notesRouter
