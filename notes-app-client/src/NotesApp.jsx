@@ -5,6 +5,7 @@ import Sidebar from "./sidebar/Sidebar";
 import { backendNoteToNote, noteToBackendNote } from './utils'
 import { post } from './utils/requests'
 
+
 function NotesApp() {
   const [notes, setNotes] = useState([]);
 
@@ -32,6 +33,7 @@ function NotesApp() {
       id: "new",
       title: "Untitled",
       body: "",
+      important: false
     };
 
     setNotes([newNote, ...notes]);
@@ -80,6 +82,30 @@ function NotesApp() {
     setNotes(updatedNotesArr);
   };
 
+  const importantNote = async (note) => {
+
+    console.log('note', note)
+
+    const isFavorite = !note.isFavorite
+  
+    try {
+      let res = await fetch(`api/notes/important`, {
+        method: "PUT",
+        cache: "no-cache",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify(noteToBackendNote({...note, isFavorite})),
+      })
+      if(res.ok) fetchData()
+      
+    } catch (err){
+      console.log(err)
+    }
+  }
+
   const getActiveNote = () => {
     return notes.find(({ id }) => id === activeNote);
   };
@@ -93,7 +119,7 @@ function NotesApp() {
         activeNote={activeNote}
         setActiveNote={setActiveNote}
       />
-      <Main activeNote={getActiveNote()} onUpdateNote={onUpdateNote} onSave={saveNote} />
+      <Main activeNote={getActiveNote()} onUpdateNote={onUpdateNote} importantNote={importantNote} onSave={saveNote} />
     </div>
   );
 }

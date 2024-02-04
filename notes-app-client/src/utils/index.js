@@ -12,4 +12,3 @@ export const backendNoteToNote = (beNote) => ({
     isFavorite: beNote.important,
     lastModified: beNote.updatedAt,
 })
-

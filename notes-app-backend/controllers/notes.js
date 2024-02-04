@@ -10,6 +10,7 @@ notesRouter.post('/create', async (req, res) => {
     const body = req.body
 
     const note = new Note({
+        title: body.title,
         note: body.note,
         title: body.title,
         important: body.important,
@@ -27,8 +28,8 @@ notesRouter.post('/update', async (req, res) => {
     const n = await Note.findOne({ _id: id });
 
     n.note = note || n.note;
-    n.impotant = important !== undefined ? important : n.important;
     n.title = title || n.title;
+    n.important = important !== undefined ? important : n.important;
 
     const savedNote = await n.save()
 
@@ -45,7 +46,27 @@ notesRouter.delete('/:id', async (req,res) =>{
     res.status(204).send()
 
     console.log ("Delete successful");
+})
 
+notesRouter.put('/important', async (req, res) => {
+    const { id, important }  = req.body
+
+
+    console.log("important",important)
+
+    try{
+        const importantUpdate = await Note.findOneAndUpdate(
+        { _id: id },
+        { $set: { important : important }},
+        //check this out in mongo doc
+        )
+        
+        res.status(200).json(importantUpdate)
+
+    } catch (err) {
+        console.log(err)
+    }
+    
 })
 
 module.exports = notesRouter
