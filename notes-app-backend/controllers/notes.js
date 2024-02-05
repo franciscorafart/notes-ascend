@@ -42,9 +42,7 @@ notesRouter.delete('/:id', async (req,res) =>{
 
     if(!n){res.status(404).json({message:'no id found'})}
 
-    //res.status(200).json(onDeleteNote)
-
-    //console.log(onDeleteNote);
+    res.status(204).send()
 
     console.log ("Delete successful");
 
