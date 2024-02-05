@@ -5,6 +5,7 @@ const noteModel = mongoose.Schema({
         type: String,
         required: [true, 'please add a note']
     },
+    title: String,
     important: Boolean,
 }, {
     timestamps: true,

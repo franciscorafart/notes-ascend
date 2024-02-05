@@ -11,6 +11,7 @@ notesRouter.post('/create', async (req, res) => {
 
     const note = new Note({
         note: body.note,
+        title: body.title,
         important: body.important,
     })
 
@@ -21,12 +22,13 @@ notesRouter.post('/create', async (req, res) => {
 
 
 notesRouter.post('/update', async (req, res) => {
-    const {id, note, important } = req.body;
+    const {id, note, important, title } = req.body;
 
     const n = await Note.findOne({ _id: id });
 
     n.note = note || n.note;
     n.impotant = important !== undefined ? important : n.important;
+    n.title = title || n.title;
 
     const savedNote = await n.save()
 
