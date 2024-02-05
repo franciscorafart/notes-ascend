@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 
-const Main = ({ activeNote, onUpdateNote, onSave }) => {
+const Main = ({ activeNote, onUpdateNote, importantNote, onSave }) => {
   const onEditField = (field, value) => {
     onUpdateNote({
       ...activeNote,
@@ -28,6 +28,9 @@ const Main = ({ activeNote, onUpdateNote, onSave }) => {
           onChange={(e) => onEditField("body", e.target.value)}
         />
         <button className="save-button" onClick={onSave}>Save</button>
+
+        <button className={ activeNote.isFavorite === false ? "save-button" : "save-button important"} onClick={() => importantNote(activeNote)}>Important</button>
+      
       </div>
       <div className="app-main-note-preview">
         <h1 className="preview-title">{activeNote.title}</h1>
