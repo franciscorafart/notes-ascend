@@ -9,10 +9,12 @@ const Sidebar = ({
 
   return (
     <div className="app-sidebar">
+      
       <div className="app-sidebar-header">
         <h1>Notes</h1>
         <button onClick={onAddNote}>Add</button>
       </div>
+
       <div className="app-sidebar-notes">
         {sortedNotes.map(({ id, title, body, lastModified }, i) => (
           <div key={`${id}${title}`}
