@@ -38,15 +38,29 @@ function NotesApp() {
     setActiveNote(newNote.id);
   };
 
-  const onDeleteNote = (noteId) => {
-    setNotes(notes.filter(({ id }) => id !== noteId));
+  const onDeleteNote = async (noteId) => {
+
+    try {
+      let response = await fetch(`/api/notes/${noteId}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        await fetchData()
+      }
+    } catch (err) {
+    }
+
+
+
   };
+
 
   const saveNote = async () => {
     const active = getActiveNote()
     if (active) {
       const url = active.id === 'new' ? '/api/notes/create' : '/api/notes/update';
-      const payload = active.id === 'new' ? ({...active, id: undefined}) : active;
+      const payload = active.id === 'new' ? ({ ...active, id: undefined }) : active;
       const res = await post(url, noteToBackendNote(payload));
       if (res.ok) {
         await fetchData()
