@@ -160,3 +160,15 @@ textarea {
   font-size: 1rem;
   line-height: 2rem;
 }
+
+.pad-top {
+  padding-top: 8px;;
+}
+
+.pinned {
+  background-color:azure;
+}
+
+.disabled {
+  color: lightslategrey;
+}

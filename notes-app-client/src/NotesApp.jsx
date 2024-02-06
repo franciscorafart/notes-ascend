@@ -41,6 +41,10 @@ function NotesApp() {
   };
 
   const onDeleteNote = async (noteId) => {
+    if (noteId === 'new'){ // Remove unsaved note from the UI
+      setNotes(notes.filter(n => n.id !== 'new'))
+      return
+    }
 
     try {
       let response = await fetch(`/api/notes/${noteId}`, {
@@ -83,9 +87,6 @@ function NotesApp() {
   };
 
   const importantNote = async (note) => {
-
-    console.log('note', note)
-
     const isFavorite = !note.isFavorite
   
     try {

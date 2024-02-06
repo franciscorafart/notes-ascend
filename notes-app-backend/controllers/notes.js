@@ -10,14 +10,12 @@ notesRouter.post('/create', async (req, res) => {
     const body = req.body
     
     const note = new Note({
-        title: body.title,
         note: body.note,
         title: body.title,
         important: body.important,
     })
 
     const savedNote = await note.save()
-    console.log('saved note', savedNote)
 
     res.status(201).json(savedNote)
 })
@@ -45,15 +43,10 @@ notesRouter.delete('/:id', async (req,res) =>{
     if(!n){res.status(404).json({message:'no id found'})}
 
     res.status(204).send()
-
-    console.log ("Delete successful");
 })
 
 notesRouter.put('/important', async (req, res) => {
     const { id, important }  = req.body
-
-
-    console.log("important",important)
 
     try{
         const importantUpdate = await Note.findOneAndUpdate(
