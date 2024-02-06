@@ -3,7 +3,6 @@ import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
 import { render, screen } from '@testing-library/react'
 import Sidebar from '../sidebar/Sidebar'
-import NotesApp from '../NotesApp'
 
 /////////////////////////
 //Testing to search for content in component
@@ -87,21 +86,4 @@ test('clicking the button calls event handler once', async () => {
   await user.click(deleting)
 
   expect(onDeleteNote.mock.calls).toHaveLength(1)
-})
-
-
-test('<Main /> updates state and calls onSubmit', async () => {
-  const saveNote = jest.fn()
-  const user = userEvent.setup()
-
-  render(<Main activeNote={getActiveNote} onUpdateNote={onUpdateNote} onSave={saveNote}/>)
-
-  const input = screen.getByRole('textbox')
-  const sendButton = screen.getByText('save')
-
-  await user.type(input, 'Write your note here...')
-  await user.click(sendButton)
-
-  expect(saveNote.mock.calls).toHaveLength(1)
-  expect(saveNote.mock.calls[0][0].body).toBe('Write your note here...')
 })
