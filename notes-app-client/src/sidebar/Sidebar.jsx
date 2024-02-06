@@ -5,18 +5,21 @@ const Sidebar = ({
   activeNote,
   setActiveNote,
 }) => {
-  const sortedNotes = notes.sort((a, b) => b.lastModified - a.lastModified);
+  const sortedNotes = notes.sort((a, b) => b.lastModified - a.lastModified).sort((a, b) => b.isFavorite ? 1 : -1);
 
+  
   return (
     <div className="app-sidebar">
       <div className="app-sidebar-header">
         <h1>Notes</h1>
+        
         <button onClick={onAddNote}>Add</button>
       </div>
+      <h4> Important notes are pinned to the top </h4>
       <div className="app-sidebar-notes">
-        {sortedNotes.map(({ id, title, body, lastModified }, i) => (
+        {sortedNotes.map(({ id, title, body, lastModified, isFavorite }, i) => (
           <div key={`${id}${title}`}
-            className={`app-sidebar-note ${id === activeNote && "active"}`}
+            className={`app-sidebar-note ${id === activeNote && "active"} ${isFavorite ? "yes" : ""}`}
             onClick={() => setActiveNote(id)}
           >
             <div className="sidebar-note-title">
