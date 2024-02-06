@@ -37,7 +37,7 @@ button:hover {
 }
 
 .important {
-  color: yellow;
+  color: rgb(68, 0, 84);
 }
 
 .save-button:hover {
@@ -95,6 +95,10 @@ button:hover {
 .app-sidebar-note.active small {
   background: #08c;
   color: white;
+}
+
+.app-sidebar-note.yes {
+  border-left: 15px solid rgb(68, 0, 84);
 }
 
 /* NOTE EDITOR/PREVIEW (MAIN) STYLES */
