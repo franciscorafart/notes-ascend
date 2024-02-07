@@ -19,5 +19,37 @@ describe('noteReducer', () => {
 
         expect(newState).toHaveLength(1);
         expect(newState).toContainEqual(action.payload);
+    });
+
+    it('returns new state with TOGGLE_IMPORTANCE action', () => {
+        const state = [
+            {
+              body: 'the app state is in redux store',
+              isFavorite: true,
+              id: 1
+            },
+            {
+              body: 'state changes are made with actions',
+              isFavorite: false,
+              id: 2
+            }]
+        
+          const action = {
+            type: 'TOGGLE_IMPORTANCE',
+            payload: {
+              id: 2
+            }
+          }
+        
+        deepFreeze(state);
+
+        const newState = noteReducer(state, action);
+
+        expect(newState).toHaveLength(2);
+        expect(newState).toContainEqual({
+            body: 'state changes are made with actions',
+            isFavorite: true,
+            id: 2,
+        })
     })
 })
