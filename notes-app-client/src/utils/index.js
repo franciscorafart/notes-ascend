@@ -1,14 +1,14 @@
 export const noteToBackendNote = (note) => ({
     id: note.id,
     title: note.title,
-    note: note.body,
-    important: note.isFavorite,
+    note: note.content,
+    important: note.important,
 })
 
 export const backendNoteToNote = (beNote) => ({
     id: beNote.id,
     title: beNote.title,
-    body: beNote.note,
-    isFavorite: beNote.important,
+    content: beNote.note,
+    important: beNote.important,
     lastModified: beNote.updatedAt,
 })

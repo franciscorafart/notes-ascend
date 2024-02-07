@@ -7,8 +7,8 @@ describe('noteReducer', () => {
         const action = {
             type: 'NEW_NOTE',
             payload: {
-                body: 'the app state',
-                isFavorite: true,
+                content: 'the app state',
+                important: true,
                 id: '123',
             },
         }
@@ -24,13 +24,13 @@ describe('noteReducer', () => {
     it('returns new state with TOGGLE_IMPORTANCE action', () => {
         const state = [
             {
-              body: 'the app state is in redux store',
-              isFavorite: true,
+              content: 'the app state is in redux store',
+              important: true,
               id: 1
             },
             {
-              body: 'state changes are made with actions',
-              isFavorite: false,
+              content: 'state changes are made with actions',
+              important: false,
               id: 2
             }]
         
@@ -47,8 +47,8 @@ describe('noteReducer', () => {
 
         expect(newState).toHaveLength(2);
         expect(newState).toContainEqual({
-            body: 'state changes are made with actions',
-            isFavorite: true,
+            content: 'state changes are made with actions',
+            important: true,
             id: 2,
         })
     })

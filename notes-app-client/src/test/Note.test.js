@@ -11,7 +11,7 @@ test('renders content', () => {
   const note = {
     id: 'banana',
     title: 'bananana',
-    body: 'Testing Component',
+    content: 'Testing Component',
     important: true
   }
   const notes =  [note]
@@ -23,13 +23,13 @@ test('renders content', () => {
 })
 
 /////////////////////////
-//Testing the substring count in body is working as intended
+//Testing the substring count in content is working as intended
 /////////////////////////
 test('renders content substring', () => {
   const note = {
     id: 'banana',
     title: 'bananana',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a porttitor neque viverra fusceo',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a porttitor neque viverra fusceo',
     important: true
   }
   const notes =  [note]
@@ -47,7 +47,7 @@ test('renders content', () => {
   const note = {
     id: 'banana',
     title: 'bananana',
-    body: 'Component testing',
+    content: 'Component testing',
     important: true
   }
   const notes =  [note]
@@ -56,7 +56,7 @@ test('renders content', () => {
 
   const element = screen.getByText('Component testing...')
 
-  screen.debug(element)
+  // screen.debug(element)
 
   expect(element).toBeDefined()
 })
@@ -68,7 +68,7 @@ test('clicking the button calls event handler once', async () => {
   const note = {
     id: 'banana',
     title: 'bananana',
-    body: 'Component testing',
+    content: 'Component testing',
     important: true
   }
   const notes =  [note]

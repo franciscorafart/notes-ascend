@@ -7,7 +7,7 @@ const noteReducer = (state = [], action) => {
         const newState = [...state]
         const i = newState.findIndex(e => e.id === action?.payload?.id);
         const elementToChange = {...newState[i]}
-        const newElement = {...elementToChange, isFavorite: !elementToChange.isFavorite}
+        const newElement = {...elementToChange, important: !elementToChange.important}
 
         newState[i] = newElement
 

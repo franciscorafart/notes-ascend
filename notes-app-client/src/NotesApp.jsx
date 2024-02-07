@@ -32,7 +32,7 @@ function NotesApp() {
     const newNote = {
       id: "new",
       title: "Untitled",
-      body: "",
+      content: "",
       important: false
     };
 
@@ -87,7 +87,7 @@ function NotesApp() {
   };
 
   const importantNote = async (note) => {
-    const isFavorite = !note.isFavorite
+    const important = !note.important
   
     try {
       let res = await fetch(`api/notes/important`, {
@@ -98,7 +98,7 @@ function NotesApp() {
         },
         redirect: "follow",
         referrerPolicy: "no-referrer",
-        body: JSON.stringify(noteToBackendNote({...note, isFavorite})),
+        content: JSON.stringify(noteToBackendNote({...note, important})),
       })
       if(res.ok) fetchData()
       

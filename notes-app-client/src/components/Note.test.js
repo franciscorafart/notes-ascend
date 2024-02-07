@@ -9,7 +9,7 @@ test('renders content', () => {
   const note = {
     id: 'banana',
     title: 'bananana',
-    body: 'Testing Component',
+    content: 'Testing Component',
     important: true
   }
   const notes =  [note]
@@ -25,7 +25,7 @@ test('renders content substring', () => {
   const note = {
     id: 'banana',
     title: 'bananana',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a porttitor neque viverra fusceo',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a porttitor neque viverra fusceo',
     important: true
   }
   const notes =  [note]
@@ -41,7 +41,7 @@ test('renders content substring', () => {
   const note = {
     id: 'banana',
     title: 'bananana',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a porttitor neque viverra fusceo',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a porttitor neque viverra fusceo',
     important: true
   }
   const notes =  [note]

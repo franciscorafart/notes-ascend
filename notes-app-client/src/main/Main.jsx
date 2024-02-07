@@ -22,20 +22,20 @@ const Main = ({ activeNote, onUpdateNote, importantNote, onSave }) => {
           autoFocus
         />
         <textarea
-          id="body"
+          id="content"
           placeholder="Write your note here..."
-          value={activeNote.body}
-          onChange={(e) => onEditField("body", e.target.value)}
+          value={activeNote.content}
+          onChange={(e) => onEditField("content", e.target.value)}
         />
         <button className="save-button" onClick={onSave}>Save</button>
 
-        <button className={ activeNote.isFavorite === false ? "save-button" : "save-button important"} onClick={() => importantNote(activeNote)}>Important</button>
+        <button className={ activeNote.important === false ? "save-button" : "save-button important"} onClick={() => importantNote(activeNote)}>Important</button>
       
       </div>
       <div className="app-main-note-preview">
         <h1 className="preview-title">{activeNote.title}</h1>
         <ReactMarkdown className="markdown-preview">
-          {activeNote.body}
+          {activeNote.content}
         </ReactMarkdown>
       </div>
     </div>
